@@ -12,8 +12,9 @@ print('test-github')
 # 然后，通过命令给hello.py以执行权限：
 
 # $ chmod a+x hello.py
+# 到底可不可以通过pycharm把更改push到远程仓库
 
 
 
 
-# 就可以直接运行hello.py了
+# 就可以直接运行hello.∑
