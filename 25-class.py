@@ -1,22 +1,22 @@
 # 类名一般是大写开头的字母
-class Student(object):
-	"""docstring for Student"""
-	# self本身也是传入函数内部的参数，即实例(instance)本身
-	# 一般来说，函数，包括类内部的方法，只可以使用函数内部的变量和传入函数内部的参数，一般不使用全局变量
-	def __init__(self, name, score):
-		self.name = name
-		self.score = score
-	def print_score(self):
-		print('%s : %s ' % (self.name, self.score))
-
-bart = Student('bart', 59)
-lisa = Student('lisa', 78)
-bart.print_score()
-lisa.print_score()
-
-print(bart.name)
-bart.score=89
-print(bart.score)
+# class Student(object):
+# 	"""docstring for Student"""
+# 	# self本身也是传入函数内部的参数，即实例(instance)本身
+# 	# 一般来说，函数，包括类内部的方法，只可以使用函数内部的变量和传入函数内部的参数，一般不使用全局变量
+# 	def __init__(self, name, score):
+# 		self.name = name
+# 		self.score = score
+# 	def print_score(self):
+# 		print('%s : %s ' % (self.name, self.score))
+#
+# bart = Student('bart', 59)
+# lisa = Student('lisa', 78)
+# bart.print_score()
+# lisa.print_score()
+#
+# print(bart.name)
+# bart.score=89
+# print(bart.score)
 
 
 '''
@@ -44,8 +44,13 @@ bartt = Student2('bart', 59)
 bartt.print_score()
 # 创建了一个新的数据成员
 bartt.swecore = 89
+
+# __init__是特殊变量，特殊变量可以直接访问，不是私有成员
 bartt.__init__('libai',90)
 bartt._Student2__name = 'nihk'
+
+# 这一步并不是访问访问__name这个类内部成员，而仅仅是创建了一个新的类的内部成员
+bartt.__name = 'new name'
 bartt.print_score()
 # print(bartt.swecore)
 # print(bartt.get_name())

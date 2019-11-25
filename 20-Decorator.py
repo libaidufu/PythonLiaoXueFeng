@@ -6,7 +6,9 @@
 def log(func):
 	def wrapper(*args, **kw):
 		print('现在在调用 %s():' % func.__name__)
+		#  从下面这一步可以看出func是一个函数，否则不可能有输入参数
 		return func(*args, **kw)
+	# 一个装饰器的返回值是一个函数
 	return wrapper
 
 
@@ -17,18 +19,23 @@ def now():
 	print('2015-3-25')
 
 f = now
-f()
+# 运行这个函数，相当于动态增加了函数功能
+# f()
 
 @log
 def now2():
 	return '2015-43-2'
 
 f = now2
-print(f())
+# f()
+# 下面这两个打印不一样，print(f)只是打印f这个对象的属性，print(f())首先会执行函数f()，再打印函数f执行后的返回值
+# print(f)
+# print(f())
 
 # 函数对象有一个__name__属性，可以拿到函数的名字
-print(now.__name__)
-print(f.__name__)
+# nowv只是命名空间的一个变量名，经过装饰器后，now指向了新的函数对象
+print(now.__name__)        # 返回wrapper
+print(f.__name__)          # 返回wrapper
 
 
 '''
@@ -46,19 +53,19 @@ wrapper()函数的参数定义是(*args, **kw)，因此，wrapper()函数可以�
 
 比如，要自定义log的文本：
 '''
-def log(text):
-	def decorator(func):
-		def wrapper(*args, **kw):
-			print('%s %s():' % (text, func.__name__))
-			return func(*args, **kw)
-		return wrapper
-	return decorator
-
-@log('execute')
-def now():
-	print('balabala')
-
-now()
+# def log(text):
+# 	def decorator(func):
+# 		def wrapper(*args, **kw):
+# 			print('%s %s():' % (text, func.__name__))
+# 			return func(*args, **kw)
+# 		return wrapper
+# 	return decorator
+#
+# @log('execute')
+# def now():
+# 	print('balabala')
+#
+# now()
 
 
 '''
@@ -70,11 +77,11 @@ now()
 '''
 
 
-import functools
-
-def log(func):
-	@functools.wraps(func)
-	def wrapper(*args, **kw):
-		print('call %s():' % func.__name__)
-		return func(*args, **kw)
-	return wrapper
+# import functools
+#
+# def log(func):
+# 	@functools.wraps(func)
+# 	def wrapper(*args, **kw):
+# 		print('call %s():' % func.__name__)
+# 		return func(*args, **kw)
+# 	return wrapper

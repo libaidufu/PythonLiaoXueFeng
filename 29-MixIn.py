@@ -1,3 +1,7 @@
+'''
+优先考虑多重继承而不是多层次的继承
+'''
+
 class Runnable(object):
 	def run(self):
 		print('Running...')
@@ -17,6 +21,7 @@ class Bird(Animal):
     pass
 
 # 各种动物:
+# 多重继承
 class Dog(Mammal,Runnable):
     pass
 
