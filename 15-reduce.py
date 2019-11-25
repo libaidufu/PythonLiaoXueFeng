@@ -8,6 +8,8 @@ from functools import reduce
 def add(x,y):
 	return x + y
 
+a = reduce(add, [1, 3,5,7,9])
+print(a)
 print(reduce(add, [1,3,5,7,9]))
 print(sum([1,3,5,7,9]))
 
